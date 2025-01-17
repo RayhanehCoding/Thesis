@@ -8,8 +8,6 @@
 #include "TPad.h"
 #include "TSpectrum.h"
 #include "TSystem.h"
-//#include <TF1Convolution.h>
-
 
 using namespace std;
 
@@ -32,16 +30,7 @@ void RF_Convolution()
 
         datahist = (TH1D*)file1 -> Get("Po214_Energy");
         MChist = (TH1D*)file2 -> Get("Po214_Energy"); 
-	/*
-	//TH1F* DS_zero = new TH1F("Signal0", "Deconvolved Signal starting at 0", deconv_signal->GetNbinsX(), 0, deconv_signal->GetXaxis()->GetXmax());
-        TH1F* RF_zero = new TH1F("Signal0", "Deconvolved Signal starting at 0", 500, 0, 5);
-
-	for (int i=0; i<= (RF_signal->GetNbinsX()-85); i++)
-	{
-		RF_zero->SetBinContent(i+1, RF_signal->GetBinContent(i+1 + 85));
-	}
-
-	*/
+	
 	TH1D *convolved_hist = new TH1D("Response_MC", "Convolution_hist", 500, 0., 5);
 	convolved_hist ->GetXaxis()->SetTitle("Energy [MeV]");
         //----------------------------------------------------------------------------------------
@@ -54,7 +43,6 @@ void RF_Convolution()
 
 	for(i = 0; i<nbins; i++) data[i] = datahist->GetBinContent(i+1);
 	for(i = 0; i<nbins; i++) MC[i] = MChist->GetBinContent(i+1);
-	//for(i = 0; i<nbins; i++) RF_array[i] = RF_test->GetBinContent(i+1);
         //----------------------------------------------------------------------------------------
 	//define the delta function and the exponential function:
 	cout << "You're on track" << endl;	
@@ -76,7 +64,6 @@ void RF_Convolution()
         TH1D* Raw_data_signal = new TH1D("Po214_raw_data", "Po214_raw_data", 500, 0, 5);
 
 	//Perform the convolution:
- 	//int m = datahist->GetNbinsX();
 	int m = MChist->GetNbinsX();
 	cout << m << endl;
     	int n = nbins;
@@ -90,8 +77,6 @@ void RF_Convolution()
 		{
 		if (i-j >= 0) //check to omly get the possitive side of the response function
 		{
-			//C[i] = C[i] + data[j] * DSignal[i-j+1];
-			//C += data[j] * DSignal[i - j];
 			C += MC[j] * ResponseF[i - j];//getting the parameters and adding to the previous one 
 		}
 		}
@@ -107,11 +92,7 @@ void RF_Convolution()
 	convolved_hist-> Scale(1/convolved_hist->Integral());
 	
 	//Fitting the convolved_hist (which we hope to look like a data signal) to compare with the actual data-gauss-fit parameters	
-	/*
-	TF1* Fit_gauss = new TF1("Fit_gauss", "gaus", 0.75, .95);
-        Fit_gauss -> SetLineColor(kYellow);
-	convolved_hist->Fit("Fit_gauss", "R");// Option "R" specifies the range of the gaussian fit
-	*/
+
 	Raw_data_signal -> SetLineColor(kRed);
 	convolved_hist-> SetLineColor(kBlack);
 	
