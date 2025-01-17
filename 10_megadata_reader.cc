@@ -31,83 +31,46 @@ void HistoMaker()
 	TH2D *Po_nhitscleaned = new TH2D("Po214_NhitsC", "Po214_NhitsC", 200, 0, 450, 200, 0, 6000);
 	Po_nhitscleaned -> GetXaxis() -> SetTitle("NhitsC_Po214");
 	Po_nhitscleaned -> GetYaxis() -> SetTitle("Event_position_r");
-	//Po_nhitscleaned -> SetTitle("Po214_NhitsC_May_2022_#300032_301122_deltaR_700");//done
-	//Po_nhitscleaned -> SetTitle("Po214_NhitsC_May_2022_#300032_301122_deltaR_1000");//done
 	Po_nhitscleaned -> SetTitle("Po214_NhitsC_May_2022_#300032_301122_deltaR_2500");
-	//Po_nhitscleaned -> SetTitle("Po214_NhitsC_June_2022_#301123_301923_deltaR_1000");//done
-	//Po_nhitscleaned -> SetTitle("Po214_NhitsC_June_2022_#301123_301923_deltaR_2500");
-	//Po_nhitscleaned -> SetTitle("Po214_NhitsC_June_2022_#301123_301923_deltaR_700");//done
+	
 
 	//2D histogram for Bismuth 214 nhitsC vs position r; How many PMT hits per single event.
 	TH2D *Bi_nhitscleaned = new TH2D("Bi214_NhitsC", "Bi214_NhitsC", 200, 300, 1000, 200, 0., 6000);
 	Bi_nhitscleaned -> GetXaxis() -> SetTitle("NhitsC_Bi214");
 	Bi_nhitscleaned -> GetYaxis() -> SetTitle("Event_position_r");
-	//Bi_nhitscleaned -> SetTitle("Bi214_NhitsC_May_2022_#300032_301122_deltaR_700");//done
-	//Bi_nhitscleaned -> SetTitle("Bi214_NhitsC_May_2022_#300032_301122_deltaR_1000");//done
 	Bi_nhitscleaned -> SetTitle("Bi214_NhitsC_May_2022_#300032_301122_deltaR_2500");
-	//Bi_nhitscleaned -> SetTitle("Bi214_NhitsC_June_2022_#301123_301923_deltaR_1000");//done
-	//Bi_nhitscleaned -> SetTitle("Bi214_NhitsC_June_2022_#301123_301923_deltaR_2500");
-	//Bi_nhitscleaned -> SetTitle("Bi214_NhitsC_June_2022_#301123_301923_deltaR_700");//done
-
 	// --------------------------------------------------------------------------
 	// NHitsC vs. position x
 	TH2D *Po_nhitscleaned_xz = new TH2D("Po_nhitXZ","Po_nhitXZ",200, -6000,6000, 200, -6000, 6000);
 	Po_nhitscleaned_xz -> GetXaxis() -> SetTitle("Nhits_x");
 	Po_nhitscleaned_xz -> GetYaxis() -> SetTitle("Nhits_z");
-	//Po_nhitscleaned_xz -> SetTitle("Po_nhitXZ_May_2022_#300032_301122_deltaR_700");//done
-	//Po_nhitscleaned_xz -> SetTitle("Po_nhitXZ_May_2022_#300032_301122_deltaR_1000");//done
 	Po_nhitscleaned_xz -> SetTitle("Po_nhitXZ_May_2022_#300032_301122_deltaR_2500");
-	//Po_nhitscleaned_xz -> SetTitle("Po_nhitXZ_June_2022_#301123_301923_deltaR_1000");//done
-	//Po_nhitscleaned_xz -> SetTitle("Po_nhitXZ_June_2022_#301123_301923_deltaR_2500");
-	//Po_nhitscleaned_xz -> SetTitle("Po_nhitXZ_June_2022_#301123_301923_deltaR_700");//done
-
 	// --------------------------------------------------------------------------
+	
 	//Energy; 1D histogram for Pollonium 214 Energy 
 	TH1D *Po_energy = new TH1D("Po214_Energy", "Po214_Energy", 500, 0, 5);
 	Po_energy -> GetXaxis() -> SetTitle("Po214_Energy_spectrum");
 	Po_energy -> GetYaxis() -> SetTitle("Event_Count");
-	//Po_energy -> SetTitle("Po214_Energy_May_2022_#300032_301122_deltaR_700");//done
-	//Po_energy -> SetTitle("Po214_Energy_May_2022_#300032_301122_deltaR_1000");//done
 	Po_energy -> SetTitle("Po214_Energy_May_2022_#300032_301122_deltaR_2500");
-	//Po_energy -> SetTitle("Po214_Energy_June_2022_#301123_301923_deltaR_1000");//done
-	//Po_energy -> SetTitle("Po214_Energy_June_2022_#301123_301923_deltaR_2500");
-	//Po_energy -> SetTitle("Po214_Energy_June_2022_#301123_301923_deltaR_700");//done
-
 	//1D histogram for Bismuth 214 Energy
+	
 	TH1D *Bi_energy = new TH1D("Bi214_Energy", "Bi214_Energy", 500, 0, 5);
 	Bi_energy -> GetXaxis() -> SetTitle("Bi214_Energy_spectrum");
 	Bi_energy -> GetYaxis() -> SetTitle("Event_Count");
-	//Bi_energy -> SetTitle("Bi214_Energy_May_2022_#300032_301122_deltaR_700");//done
-	//Bi_energy -> SetTitle("Bi214_Energy_May_2022_#300032_301122_deltaR_1000");//done
 	Bi_energy -> SetTitle("Bi214_Energy_May_2022_#300032_301122_deltaR_2500");
-	//Bi_energy -> SetTitle("Bi214_Energy_June_2022_#301123_301923_deltaR_1000");//done
-	//Bi_energy -> SetTitle("Bi214_Energy_June_2022_#301123_301923_deltaR_2500");
-	//Bi_energy -> SetTitle("Bi214_Energy_June_2022_#301123_301923_deltaR_700");//done
 
 	// --------------------------------------------------------------------------
 	//Decay Time of each tags; 1D line graph of the deacy tie of all the tagged BiPos(214)
 	TH1D *BiPo_Decay_Time = new TH1D("BiPo_decay_time", "BiPo_decay_time", 100, 0, 5000000);
 	BiPo_Decay_Time -> GetXaxis() -> SetTitle("Decay_Time");
 	BiPo_Decay_Time -> GetYaxis() -> SetTitle("Event_Count");
-	//BiPo_Decay_Time -> SetTitle("BiPo_decay_time_May_2022_#300032_301122_deltaR_700");//done
-	//BiPo_Decay_Time -> SetTitle("BiPo_decay_time_May_2022_#300032_301122_deltaR_1000");//done
 	BiPo_Decay_Time -> SetTitle("BiPo_decay_time_May_2022_#300032_301122_deltaR_2500");
-	//BiPo_Decay_Time -> SetTitle("BiPo_decay_time_June_2022_#301123_301923_deltaR_1000");//done
-	//BiPo_Decay_Time -> SetTitle("BiPo_decay_time_June_2022_#301123_301923_deltaR_2500");
-	//BiPo_Decay_Time -> SetTitle("BiPo_decay_time_June_2022_#301123_301923_deltaR_700");//done
-
 	// --------------------------------------------------------------------------
 	// Delta_r of tagged events
 	TH1D *BiPo_Delta_r = new TH1D("BiPo_Delta_r","BiPo_Delta_r", 100, 0, 4000);
 	BiPo_Delta_r -> GetXaxis() -> SetTitle("Delta_r");
 	BiPo_Delta_r -> GetYaxis() -> SetTitle("Event_Count");
-	//BiPo_Delta_r -> SetTitle("BiPo_Delta_r_May_2022_#300032_301122_deltaR_700");//done
-	//BiPo_Delta_r -> SetTitle("BiPo_Delta_r_May_2022_#300032_301122_deltaR_1000");//done
 	BiPo_Delta_r -> SetTitle("BiPo_Delta_r_May_2022_#300032_301122_deltaR_2500");
-	//BiPo_Delta_r -> SetTitle("BiPo_Delta_r_June_2022_#301123_301923_deltaR_1000");//done
-	//BiPo_Delta_r -> SetTitle("BiPo_Delta_r_June_2022_#301123_301923_deltaR_2500");
-	//BiPo_Delta_r -> SetTitle("BiPo_Delta_r_June_2022_#301123_301923_deltaR_700");//done
-
 	//Events per month; 2D line graph; Plots events in each day vs. the date 
 	TH2D *Monthly_events = new TH2D("Monthly_events", "Monthly_events", 1000, 0,2000, 500, 0,600);
 	Monthly_events -> GetXaxis() -> SetTitle("Run Number");
@@ -116,27 +79,10 @@ void HistoMaker()
 
 	// defining the path to the MegaData files:
 	
-	//TString Directory = "/home/rdehghani/Thesis/BiPo_studies/BiPo_Files/May_data_longHL/";
 	TString Directory = "/home/rdehghani/Thesis/BiPo_studies/BiPo_Files/Megadata_2022/";
-	//TString Directory = "/home/rdehghani/Thesis/BiPo_studies/BiPo_Files/";
 	TString Filename = "Megadata_BiPo214_2022_File_";
-	//TString Filename = "Megadata_File_";
-	//Megadata_File_300353_long_halflife.txt
-	//the run numbers will be included later in the for loop
 	TString Filetype = "_long_halflife.txt";
 	TString Filepath;
-	
-	/*	
-	//defining the simulation run paths:
-	//TString Directory = "/home/rdehghani/Thesis/BiPo_studies/BiPo_Files/";
-        TString Directory = "/home/rdehghani/Thesis/BiPo_studies/BiPo_Files/Simulation/";
-	TString Filename = "Simulation_Megadata_BiPo214_2022_run_";
-	//TString Filename = "May_November2022_Megadata_File_";
-        //Megadata_File_300353_long_halflife.txt
-        //the run numbers will be included later in the for loop
-        TString Filetype = "_long_halflife.txt";
-        TString Filepath;
-	*/
 
 	vector<double> Po_posr_vec, Po_posx_vec, Po_posy_vec, Po_posz_vec, Po_energy_vec, Po_nhitsC_vec, Po_time_vec;
 	vector<double> Bi_posr_vec, Bi_posx_vec, Bi_posy_vec, Bi_posz_vec, Bi_energy_vec, Bi_nhitsC_vec, Bi_time_vec;
@@ -206,25 +152,7 @@ void HistoMaker()
 TF1 *Fit_gaus = new TF1("Fit_gaus", "gaus", 0.6, 1);
 Fit_gaus -> SetLineColor(kBlack);
 
-/////May:
-//TFile* Po_energy_file = new TFile("BiPo214_May_2p2_optics_2500mm_16HL.root", "Recreate");//done
-//TFile* Po_energy_file = new TFile("BiPo214_May_2p2_optics_1500mm_16HL.root", "Recreate");
 TFile* Po_energy_file = new TFile("Rebin_BiPo214_May_2p2_optics_1000mm_16HL.root", "Recreate");//done
-//TFile* Po_energy_file = new TFile("BiPo214_May_2p2_optics_700mm_8HL.root","Recreate");//done
-//TFile* MC_BiPo_file = new TFile("Rebin_MC_BiPo214_May_2p2_optics_2500mm_16HL.root", "Recreate");
-//TFile* MC_BiPo_file = new TFile("MC_BiPo214_May_2p2_optics_1500mm_16HL.root", "Recreate");
-//TFile* MC_BiPo_file = new TFile("Rebin_MC_BiPo214_May_2p2_optics_1000mm_16HL.root", "Recreate");//done
-//TFile* MC_BiPo_file = new TFile("MC_BiPo214_May_2p2_optics_700_8HL.root", "Recreate");//done
-
-/////June:
-//TFile* Po_energy_file = new TFile("BiPo214_June_2p2_optics_2500mm_16HL.root","Recreate");
-//TFile* Po_energy_file = new TFile("BiPo214_June_2p2_optics_1500mm_16HL.root", "Recreate");
-//TFile* Po_energy_file = new TFile("BiPo214_June_2p2_optics_1000mm_16HL.root","Recreate");//done
-//TFile* Po_energy_file = new TFile("BiPo214_June_2p2_optics_700mm_8HL.root","Recreate");//done
-//TFile* MC_BiPo_file = new TFile("MC_BiPo214_June_2p2_optics_2500mm_16HL.root","Recreate");
-//TFile* MC_BiPo_file = new TFile("MC_BiPo214_June_2p2_optics_1500mm_16HL.root", "Recreate");
-//TFile* MC_BiPo_file = new TFile("MC_BiPo214_June_2p2_optics_1000mm_16HL.root", "Recreate");//done
-//TFile* MC_BiPo_file = new TFile("MC_BiPo214_June_2p2_optics_700_8HL.root", "Recreate");//done
 
 
 Po_energy -> Sumw2();
