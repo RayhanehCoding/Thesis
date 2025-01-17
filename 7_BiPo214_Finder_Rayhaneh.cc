@@ -86,13 +86,11 @@
 
 	// This Plot tells us where in the detctor had how many PMT hits for a single Bi214 event
 	TH2D *Po_nhitsCleaned = new TH2D("Po214_nhitsCleaned", "Po214_nhitsCleaned", 200, 0, 450, 200, 0., 6000);
-	
 	Po_nhitsCleaned -> GetXaxis() -> SetTitle("nhitsCleaned Po-214");
 	Po_nhitsCleaned -> GetYaxis() -> SetTitle("Pos-r Po-214");
 
 	// Plotting a 3D histogram for the purpose of seeing what event occured where; 
 	TH3D *Po_Total_3D  = new TH3D("3D_Po-214","Po214_overall_deacyT_nhits_deltaR", 200, 0, 400, 200, 0, 5000, 200, 0, 500000);
-	
 	Po_Total_3D -> GetXaxis() -> SetTitle("nhitsCleaned Po-214");
 	Po_Total_3D -> GetYaxis() -> SetTitle("Delta_r");
 	Po_Total_3D -> GetZaxis() -> SetTitle("Decay_Time");
@@ -115,81 +113,41 @@
 
 	// The posx vs. posr projection of the nhitsCleaned distribution:
 	TH2D *Po_nhits_distribution_xr = new TH2D("Po214_xr","Po214_nhitsCleaned_distribution_xr", 300, 0., 6000, 300, 0., 6000);
-
 	Po_nhits_distribution_xr -> GetXaxis() -> SetTitle("pos-x");
 	Po_nhits_distribution_xr -> GetYaxis() -> SetTitle("pos-r");
 
 	// The posx vs. posz projection of the nhitsCleaned distribution:
 	TH2D *Po_nhits_distribution_xz = new TH2D("Po214_xz", "Po214_nhitsCleaned_distribution_xz", 300, -6000, 6000, 300, -6000, 6000);
-
 	Po_nhits_distribution_xz -> GetXaxis() -> SetTitle("pos-x");
 	Po_nhits_distribution_xz -> GetYaxis() -> SetTitle("pos-z");
 
 	// The Decay time shows how long it takes a single Bi214(Beta) to decay into a Po214 alpha:
 	TH1D *Po_214_Decay_Time  = new TH1D("Po214_Decay_Time", "Po214_Decay_Time", 200, 0., 5000000);	
-
 	Po_214_Decay_Time -> GetXaxis() -> SetTitle("Po214_Deacy_time");
 
 	// Delta_r is the distance from the first appearance of the Beta signal to when the corresponding Po214 is detected: 
 	TH1D *BiPo214_Delta_r = new TH1D("BiPo214_Delta_r", "BiPo214", 200, 0., 4000);
-	
 	BiPo214_Delta_r -> GetXaxis() -> SetTitle("Delta_r");
 
 	// Plotting the number of PMT hits for each Po214 event:
 	TH1D *Po_nhits_plot = new TH1D("Po214_nhits_distribution_per_event", "Po214_nhits_distribution_", 200, 0., 450);
-	
 	Po_nhits_plot -> GetXaxis() -> SetTitle("Po214_nhitsCleaned");
 
 //---------------------------- Plotting for Bi_214 --------------------------------------
 
 	// This Plot tells us where in the detctor had how many PMT hits for a single Bi214 event;
 	TH2D *Bi_nhitsCleaned = new TH2D("Bi214_nhitsCleaned_per_event", "Bi214", 200, 300, 1000, 200, 0., 6000);
-
 	Bi_nhitsCleaned -> GetXaxis() -> SetTitle("Bi214_nhitsCleaned");	
 	Bi_nhitsCleaned -> GetYaxis() -> SetTitle("Bi214_posr");
 
 	// The nhitsC distribution for Bismuth 214 :
 	TH1D *Bi_nhits_plot = new TH1D("Bi_nhits_plot", "Bi214", 200, 300, 1000);
-	
 	Bi_nhits_plot -> GetXaxis() -> SetTitle("1D nhitsCleaned");
 
 //---------------------------------------------------------------------------------------
 	//------------Defining a path to store the energy values inot.------------------------
         TString Data_Storage_path = "/home/rdehghani/Thesis/Data_files/";
         TString Energy_Output_Path = "/home/rdehghani/Thesis/Data_files/Energy_Data/" ;
-/*      
-        TString Po_energy_path =  Data_Storage_path + index + Po_energy_output ;
-        TString Po_nhitsC_path =  Data_Storage_path + index + Po_nhitsC_output ;
-        TString Po_eventID_path = Data_Storage_path + index + Po_eventID_output ;
-        TString Po_posx_path =  Data_Storage_path + index + Po_posx_output ;
-        TString Po_posy_path =  Data_Storage_path + index + Po_posy_output ;
-        TString Po_posz_path =  Data_Storage_path + index + Po_posz_output ;
-        TString Po_posr_path =  Data_Storage_path + index + Po_posr_output ;
-
-        TString Bi_energy_path =  Data_Storage_path + index + Bi_energy_output ;
-        TString Bi_nhitsC_path =  Data_Storage_path + index + Bi_nhitsC_output ;
-        TString Bi_eventID_path = Data_Storage_path + index + Bi_eventID_output ;
-        TString Bi_posx_path =  Data_Storage_path + index + Bi_posx_output ;
-        TString Bi_posy_path =  Data_Storage_path + index + Bi_posy_output ;
-        TString Bi_posz_path =  Data_Storage_path + index + Bi_posz_output ;
-        TString Bi_posr_path =  Data_Storage_path + index + Bi_posr_output ;
- 
-	TString Po_energy_output = "/Po214_energy.txt";
-	TString Po_eventID_output = "/Po214_eventID.txt";
-	TString Po_posx_output  = "/Po214_posx.txt";
-	TString Po_posy_output  = "/Po214_posy.txt";
-	TString Po_posz_output  = "/Po214_posz.txt";
-	TString Po_posr_output  = "/Po214_posr.txt";
-	TString Po_nhitsC_output = "/Po214_nhitsCleaned.txt";
-
-	TString Bi_nhitsC_output = "/Bi214_nhitsCleaned.txt";
-	TString Bi_posx_output  = "/Bi214_posx.txt";
-	TString Bi_posy_output  = "/Bi214_posy.txt";
-	TString Bi_posz_output  = "/Bi214_posz.txt";
-	TString Bi_posr_output  = "/Bi214_posr.txt";
-	TString Bi_eventID_output = "/Bi214_eventID.txt";
-	TString Bi_energy_output = "/Bi214_energy.txt";
-*/
 	
 	//----------- Define a path to get the desired run numbers from ----------------
 	
@@ -249,23 +207,7 @@
         TString Bi_posr_output  = "_Bi214_posr.txt";
         TString Bi_eventID_output = "_Bi214_eventID.txt";
         TString Bi_energy_output = "_Bi214_energy.txt";
-/*
-	TString Po_energy_path =  Data_Storage_path + run_number + Po_energy_output ;
-	TString Po_nhitsC_path =  Data_Storage_path + index + Po_nhitsC_output ; 
-	TString Po_eventID_path = Data_Storage_path + index + Po_eventID_output ;
-	TString Po_posx_path =  Data_Storage_path + index + Po_posx_output ;
-	TString Po_posy_path =  Data_Storage_path + index + Po_posy_output ;
-	TString Po_posz_path =  Data_Storage_path + index + Po_posz_output ;
-	TString Po_posr_path =  Data_Storage_path + index + Po_posr_output ;	
-
-	TString Bi_energy_path =  Data_Storage_path + index + Bi_energy_output ;
-        TString Bi_nhitsC_path =  Data_Storage_path + index + Bi_nhitsC_output ;
-        TString Bi_eventID_path = Data_Storage_path + index + Bi_eventID_output ;
-        TString Bi_posx_path =  Data_Storage_path + index + Bi_posx_output ;
-        TString Bi_posy_path =  Data_Storage_path + index + Bi_posy_output ;
-        TString Bi_posz_path =  Data_Storage_path + index + Bi_posz_output ;
-        TString Bi_posr_path =  Data_Storage_path + index + Bi_posr_output ;
-*/	
+	
 	int runs = (int)run_vec.size(); // geting the number of runs that we want to proccess
 	
 	//**************************************************************************************
@@ -463,9 +405,6 @@
 	  			    )
 				{
 					Bi_Found++;
-				//	Bi_momentum = sqrt (Bi_energy**2 - me_0**2);
-				//	cout << "Bi_momentum is = " << Bi_momentum << endl;
-
 					for (int PoFinder = BiFinder+1 ; PoFinder < entries; PoFinder++)
 					{
 						chain->GetEntry(PoFinder);
