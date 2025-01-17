@@ -1,10 +1,11 @@
-// Tue Oct 3
+// Tue Oct 3, 2024
 // Rayhaneh Dehghani; Master's student 
 // Queen's University 
 // SNO+ Experiment
 //
-// This script is for the purpose of making a stack plot of the response function convolved with the 2n2b spectrum
-// and then overlayed with the unconvolved 2n2b spectrum and a bunch of random background
+// This script is for the purpose of making a stack plot of the response function convolved with the 2-neutrino 2-beta spectrum of 
+// Tellurium-130. This signal is then overlayed with the unconvolved 2-neutrino 2-beta spectrum along with other bbackground signals
+// in the energy region of 0.1-3 MeV.
 //
 
 #include "TCanvas.h"
@@ -96,8 +97,6 @@ int tellurium()
                 {
                 if (i-j >= 0) //check to omly get the possitive side of the response function
                 {
-                        //C[i] = C[i] + data[j] * DSignal[i-j+1];
-                        //C += data[j] * DSignal[i - j];
                         C += Te[j] * ResponseF[i - j];//getting the parameters and adding to the previous one
                 }
                 }
@@ -119,23 +118,6 @@ int tellurium()
 
 	Long64_t numEvents_twonu = Te130_2n2b_Energy -> Integral();
 	cout << "Number of Events in Te130_2n2b = " << numEvents_twonu << endl;
-	/*	 
-	Long64_t numEvents_0nu = Te130_0nu_Energy ->Integral();
-	cout << "Number of events in histogram " << Te130_0nu_Energy << ": " << numEvents_0nu << endl;
-	
-	Long64_t numEvents_B8 = B8_nu_energy -> Integral();
-	Long64_t numEvents_Tl208 = Tl208_Energy ->Integral();
-	Long64_t numEvents_bipo212Leakage = EnergyBiPo212 ->Integral();
-*/
-
-	/*
-	TeConv_hist -> Scale(numEvents_twonu/4344789.56);//
-        Te130_2n2b_Energy -> Scale(numEvents_twonu/4344789.56);//6.05254
-        Te130_0nu_Energy -> Scale(numEvents_0nu/76.4506);//46.8727
-        B8_nu_energy -> Scale(numEvents_B8/1021.4251);//
-        Tl208_Energy -> Scale(numEvents_Tl208/16137.5569);
-        EnergyBiPo212 -> Scale(numEvents_bipo212Leakage/2282.9266);
-*/
 	 
 	// Current background rates
 	TeConv_hist -> Scale(4344789.56/numEvents_twonu);//
@@ -145,30 +127,9 @@ int tellurium()
         Tl208_Energy -> Scale(16137.5569/numEvents_Tl208);
         EnergyBiPo212 -> Scale(2282.9266/numEvents_bipo212Leakage);
 	
-
-
-/*	
-	TeConv_hist->Scale(1.0/TeConv_hist ->Integral());
-	Te130_2n2b_Energy->Scale(1.0/Te130_2n2b_Energy ->Integral());
-	Te130_0nu_Energy->Scale(1.0/Te130_0nu_Energy ->Integral());
-	B8_nu_energy->Scale(1.0/B8_nu_energy ->Integral());
-	Tl208_Energy->Scale(1.0/Tl208_Energy ->Integral());
-	EnergyBiPo212->Scale(1.0/EnergyBiPo212 ->Integral());
-*/
-//----------Set fill style to transparent
-gStyle->SetFillStyle(1001);
-//gStyle->SetFillAlpha(0.3);
-/*
-	TeConv_hist->SetFillColor(kRed);
-        //TeConv_hist->SetFillStyle(1001);
-
-	Te130_2n2b_Energy->SetFillColor(kBlue);
-        Te130_0nu_Energy->SetFillColor(kGreen);
-        B8_nu_energy ->SetFillColor(kCyan);
-        Tl208_Energy -> SetFillColor(kBlack);
-        EnergyBiPo212 ->SetFillColor(kMagenta);
-*/
-//-------Setline color of each spectrum----
+	//----------Set fill style to transparent
+	gStyle->SetFillStyle(1001);
+	//-------Setline color of each spectrum----
 	TeConv_hist->SetLineColor(kRed);
 	TeConv_hist->SetLineWidth(2);
 
@@ -190,24 +151,15 @@ gStyle->SetFillStyle(1001);
 	TCanvas *c4 = new TCanvas("c4", "c4", 800, 600);
         c4 -> SetTickx();
         c4 -> SetTicky();
-        //c4 -> SetGridx();
-        //c4 -> SetGridy();
 	
-	
-	//TeConv_hist -> Draw("HIST");
-	//B8_nu_energy ->Draw("HIST");
+	// add each physocal proccess to the same histogram
 	Te130_2n2b_Energy -> Draw("HIST");
 	EnergyBiPo212 -> Draw("HIST same");
 	Te130_0nu_Energy -> Draw("HIST same");
 	TeConv_hist -> Draw("HIST same");
-        //Te130_2n2b_Energy -> Draw("HIST same");
 	B8_nu_energy-> Draw("HIST same");
 	Tl208_Energy -> Draw("HIST same");
-	//EnergyBiPo212 -> Draw("HIST same");
 	
-
-	//Te130_2n2b_Energy -> Draw("HIST");
-
 
 	TLegend *legend = new TLegend(0.6, 0.6, 0.9, 0.9);
         legend -> AddEntry(TeConv_hist, "Convolved Te1302n2b spectrum");
